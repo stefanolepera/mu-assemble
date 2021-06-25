@@ -1,15 +1,25 @@
-import React, { useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import DataContext from '../../Context/DataContext';
-import { ImgWrapper } from './Image.style';
+import Placeholder from './Placeholder.png';
+import { ImgWrapper, PlaceholderWrapper } from './Image.style';
 
 const Image = () => {
     const { thumbName } = useContext(DataContext);
+    const [loaded, setLoaded] = useState(false);
+
+    useEffect(() => {
+        setLoaded(false);
+    }, [thumbName])
 
     return (
-        <ImgWrapper
-            src={`images/fullsize/${thumbName || 'Default'}.jpg`}
-            alt={thumbName}
-        />
+        <PlaceholderWrapper placeholder={Placeholder}>
+            <ImgWrapper
+                style={loaded ? {} : { display: 'none' }}
+                src={`images/fullsize/${thumbName || 'Default'}.jpg`}
+                alt={thumbName}
+                onLoad={() => setLoaded(true)}
+            />
+        </PlaceholderWrapper>
     );
 };
 

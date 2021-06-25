@@ -1,19 +1,31 @@
-import React, { useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import DataContext from '../../Context/DataContext';
-import { ImgWrapper } from './Thumb.style';
+import Placeholder from './Placeholder.png';
+import { ImgWrapper, PlaceholderWrapper } from './Thumb.style';
 
 const Thumb = ({ name }) => {
     const { setContext } = useContext(DataContext);
+    const [loaded, setLoaded] = useState(false);
+
+    useEffect(() => {
+        setLoaded(false);
+    }, [])
 
     const handleThumbClicked = () => {
         setContext({ thumbName: name });
     }
+
     return (
-        <ImgWrapper
-            onClick={handleThumbClicked}
-            src={`images/thumbs/${name}.png`}
-            alt={name}
-        />
+        <PlaceholderWrapper placeholder={Placeholder}>
+            <ImgWrapper
+                style={loaded ? {} : { display: 'none' }}
+                onClick={handleThumbClicked}
+                src={`images/thumbs/${name}.png`}
+                alt={name}
+                onLoad={() => setLoaded(true)}
+            />
+        </PlaceholderWrapper>
+        
     );
 };
 

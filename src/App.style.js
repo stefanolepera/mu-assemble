@@ -5,8 +5,11 @@ export const MainWrapper = styled.div`
 `;
 
 export const GlobalStyle = createGlobalStyle`
-  body {
-    font-family: Roboto !important;
-    margin: 0 0;
-  }
+	html {
+		background-color: #f6f6f6;
+	}
+	body {
+		font-family: Roboto !important;
+		margin: 0 0;
+	}
 `
