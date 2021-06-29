@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import DataContext from '../../Context/DataContext';
 import Placeholder from './Placeholder.png';
+import { Spinner } from '../../Components';
 import { ImgWrapper, PlaceholderWrapper } from './Image.style';
 
 const Image = () => {
@@ -13,6 +14,7 @@ const Image = () => {
 
     return (
         <PlaceholderWrapper placeholder={Placeholder}>
+            { !loaded && <Spinner marg='250px' /> }
             <ImgWrapper
                 style={loaded ? {} : { display: 'none' }}
                 src={`images/fullsize/${thumbName || 'Default'}.jpg`}

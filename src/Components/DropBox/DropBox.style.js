@@ -25,7 +25,7 @@ export const SelectWrapper = styled.select`
     box-sizing: border-box;
     margin: 0;
     border: 1px solid #aaa;
-    box-shadow: 0 1px 0 1px rgba(0,0,0,.04);
+    box-shadow: 0 1px 0 1px rgba(0, 0, 0, .04);
     border-radius: .5em;
     -moz-appearance: none;
     -webkit-appearance: none;
