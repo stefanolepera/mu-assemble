@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import DataContext from '../../Context/DataContext';
 import { DropBox, TeamComposition, Image } from '../../Components';
 import { getRandomIndexes } from '../../Utils/randomNumberGenerator';
-import { SettingsWrapper } from './Settings.style';
+import { SettingsWrapper, ButtonWrapper, FiltersWrapper } from './Settings.style';
 
 const Settings = () => {
     const [players, setPlayers] = useState(2);
@@ -53,7 +53,6 @@ const Settings = () => {
     const handleScenarios = (evt) => {
         const result = config.Scenarios.find( ({ ID }) => ID === parseInt(evt.target.value) );
         console.log('result', result);
-        // setScenario(result);
         handleReset('issue');
     }
 
@@ -72,47 +71,49 @@ const Settings = () => {
     return (
         <SettingsWrapper>
             <h1>SETTINGS</h1>
-            <DropBox
-                items={playersCount}
-                handleItem={handlePlayers}
-                itemValue='count'
-                itemName="count"
-                placeholder="players"
-                label="Players Count"
-            />
-            <DropBox
-                items={config.Affiliation}
-                handleItem={handleAffiliation}
-                itemValue='Name'
-                itemName="Name"
-                placeholder="affiliation"
-                label="Affiliation"
-            />
-            <DropBox
-                items={config.Type}
-                handleItem={handleType}
-                itemValue='Name'
-                itemName="Name"
-                placeholder="type"
-                label="Type"
-            />
-            <DropBox
-                items={config.Villains}
-                handleItem={handleFoes}
-                itemValue='Name'
-                itemName="Name"
-                placeholder="foes"
-                label="Foes"
-            />
-            <DropBox
-                items={config.Scenarios}
-                handleItem={handleScenarios}
-                itemValue='ID'
-                itemName="ComicIssue"
-                placeholder="issue"
-                label="Scenarios"
-            />
-            <button onClick={onTeamAssembled}>Assemble Team</button>
+            <FiltersWrapper>
+                <DropBox
+                    items={playersCount}
+                    handleItem={handlePlayers}
+                    itemValue='count'
+                    itemName="count"
+                    placeholder="players"
+                    label="Players"
+                />
+                <DropBox
+                    items={config.Affiliation}
+                    handleItem={handleAffiliation}
+                    itemValue='Name'
+                    itemName="Name"
+                    placeholder="affiliation"
+                    label="Affiliation"
+                />
+                <DropBox
+                    items={config.Type}
+                    handleItem={handleType}
+                    itemValue='Name'
+                    itemName="Name"
+                    placeholder="type"
+                    label="Type"
+                />
+                <DropBox
+                    items={config.Villains}
+                    handleItem={handleFoes}
+                    itemValue='Name'
+                    itemName="Name"
+                    placeholder="villains"
+                    label="Villains"
+                />
+                <DropBox
+                    items={config.Scenarios}
+                    handleItem={handleScenarios}
+                    itemValue='ID'
+                    itemName="ComicIssue"
+                    placeholder="issue"
+                    label="Scenarios"
+                />
+                <ButtonWrapper onClick={onTeamAssembled}>Assemble Team</ButtonWrapper>
+            </FiltersWrapper>
             <TeamComposition
                 heroesIDS={heroesIndex}
                 villainsID={villainsIndex}

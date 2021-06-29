@@ -5,6 +5,7 @@ export const MainWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    max-height: 360px;
 `;
 
 export const TeamCompWrapper = styled.div`
@@ -12,4 +13,9 @@ export const TeamCompWrapper = styled.div`
     justify-content: flex-start;
     flex-flow: row wrap;
     max-width: 500px;
+`;
+
+export const WarningWrapper = styled.div`
+    font-size: 16px;
+    font-weight: 600;
 `;

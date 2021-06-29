@@ -1,11 +1,11 @@
 import React from 'react';
-import { DropBoxWrapper } from './DropBox.style';
+import { DropBoxWrapper, LabelWrapper, SelectWrapper } from './DropBox.style';
 
 const DropBox = ({ items, handleItem, itemValue, itemName, placeholder, label }) => {
     return (
         <DropBoxWrapper>
-            <div>{label}</div>
-            <select name={placeholder} onChange={(evt) => handleItem(evt)}>
+            <LabelWrapper>{label}</LabelWrapper>
+            <SelectWrapper name={placeholder} onChange={(evt) => handleItem(evt)}>
                 {placeholder !== 'players' && <option value=''>{`-- ${placeholder} --`}</option>}
                 {items.map(item => {
                     return (
@@ -17,7 +17,7 @@ const DropBox = ({ items, handleItem, itemValue, itemName, placeholder, label })
                         </option>
                     )
                 })}
-            </select>
+            </SelectWrapper>
         </DropBoxWrapper>
     )
 }

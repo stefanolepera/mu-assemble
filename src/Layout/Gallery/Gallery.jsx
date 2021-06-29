@@ -29,13 +29,13 @@ const Gallery = () => {
 
     return (
         <MainWrapper>
-            <h1>HEROES</h1>
+            <h1>HEROES POOL</h1>
             <GalleryWrapper>
                 {heroes.map(hero => {
                     return <Thumb key={hero.ID} name={hero.Name} />
                 })}
             </GalleryWrapper>
-            <h1>VILLAINS</h1>
+            <h1>VILLAINS POOL</h1>
             <GalleryWrapper>
                 {villains.map(villain => {
                     return <Thumb key={villain.ID} name={villain.Name} />

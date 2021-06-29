@@ -1,13 +1,18 @@
 import React from "react";
 import { Thumb } from '../../Components';
-import { MainWrapper, TeamCompWrapper } from './TeamComposition.style';
+import { MainWrapper, TeamCompWrapper, WarningWrapper } from './TeamComposition.style';
 
 const TeamComposition = ({ heroesIDS, villainsID, heroesList, villainsList }) => {
-    const getWarningMessage = () => {
+    const checkWarningMessage = () => {
         if (heroesIDS[0] === -1) {
-            return <div>Not enough heroes!<br/>Check your Players Count</div>;
+            return <WarningWrapper>Not enough heroes!<br/>Check your Players Count</WarningWrapper>;
         }
-        return <div>Assemble your Team!</div>
+        return (
+            <>
+                <Thumb key='Placeholder1' name='Placeholder' />
+                <Thumb key='Placeholder2' name='Placeholder' />
+            </>
+        )
     }
 
     return (
@@ -19,14 +24,18 @@ const TeamComposition = ({ heroesIDS, villainsID, heroesList, villainsList }) =>
                     ? heroesIDS.map(heroID => {
                         return <Thumb key={heroesList[heroID].ID} name={heroesList[heroID].Name} />
                     })
-                    : getWarningMessage()
+                    : checkWarningMessage()
                 }
             </TeamCompWrapper>
-            <h1>VILLAINS</h1>
+            <h1>VILLAIN</h1>
             <TeamCompWrapper>
-                {villainsID.map(villainID => {
-                    return <Thumb key={villainsList[villainID].ID} name={villainsList[villainID].Name} />
-                })}
+                {
+                    villainsID.length > 0
+                    ? villainsID.map(villainID => {
+                        return <Thumb key={villainsList[villainID].ID} name={villainsList[villainID].Name} />
+                    })
+                    : <Thumb key='Placeholder3' name='Placeholder' />
+                }
             </TeamCompWrapper>
         </MainWrapper>
     );
